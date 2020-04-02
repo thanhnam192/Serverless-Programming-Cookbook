@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC
+        "-//Puppy Crawl//DTD Suppressions 1.1//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+
+<suppressions>
+    <!-- Star imports are ok for test files -->
+    <suppress checks="AvoidStarImport" files="src[/\\]test[/\\].+"></suppress>
+
+    <!-- Javadoc may not be required for test files -->
+    <suppress checks="JavadocType" files="src[/\\]test[/\\].+"/>
+    <suppress checks="JavadocVariable" files="src[/\\]test[/\\].+"/>
+    <suppress checks="JavadocMethod" files="src[/\\]test[/\\].+"/>
+    <suppress checks="JavadocPackage" files="src[/\\]test[/\\].+"/>
+
+    <!-- Magic number check may not be required for test files -->
+    <suppress checks="MagicNumber" files="src[/\\]test[/\\].+"/>
+
+    <!-- DesignForExtension may not be checked for test files -->
+    <suppress checks="DesignForExtension" files="src[/\\]test[/\\].+"/>
+
+    <!-- LineLength may not be checked for test files -->
+    <suppress checks="LineLength" files="src[/\\]test[/\\].+"/>
+</suppressions>

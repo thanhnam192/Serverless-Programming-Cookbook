@@ -1,0 +1,26 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: API with Lambda Integration Combination
+Resources:
+  FirstDynamoDbTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName:  my_first_table
+      AttributeDefinitions:
+        - AttributeName:  id
+          AttributeType:  S
+
+        - AttributeName:  time
+          AttributeType:  S
+
+      KeySchema:
+        - AttributeName:  id
+          KeyType:  HASH
+
+        - AttributeName:  time
+          KeyType:  RANGE
+
+      ProvisionedThroughput:
+        ReadCapacityUnits:  5
+        WriteCapacityUnits: 2
+

@@ -1,0 +1,61 @@
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lambda for DynamoDB Create Table
+Resources:
+  MyLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: "/aws/lambda/lambda-dynamodb-create-table"
+  IamRoleLambdaExecution:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: 'lambda-dynamodb-create-table-lambdaPolicy'
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: arn:aws:logs:*:*:*
+
+              - Effect: Allow
+                Action:
+                  - dynamodb:CreateTable
+                  - dynamodb:DescribeTable
+                Resource:
+                  - Fn::Sub: arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/*
+
+              - Effect: Allow
+                Action:
+                  - kms:Decrypt
+                Resource:
+                  - Fn::Sub:  arn:aws:kms:${AWS::Region}:${AWS::AccountId}:key/*
+      Path: "/"
+      RoleName: 'lambda-dynamodb-create-table-lambdaRole'
+  LambdaFunctionWithCF:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket: 'serverless.barackka'
+        S3Key: lambda-dynamodb-create-table-0.0.1-SNAPSHOT.jar
+      FunctionName: lambda-dynamodb-create-table
+      Handler: tech.heartin.books.serverlesscookbook.MyDynamoDbHandler::handleRequest
+      MemorySize: 512
+      Role: !GetAtt IamRoleLambdaExecution.Arn
+      Runtime: java8
+      Timeout: 15
+    DependsOn:
+      - MyLogGroup
+      - IamRoleLambdaExecution

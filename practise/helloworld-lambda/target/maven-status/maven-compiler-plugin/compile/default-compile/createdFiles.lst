@@ -1,0 +1,16 @@
+tech\heartin\books\serverlesscookbook\dto\DynamoDbCrudRequest.class
+tech\heartin\books\serverlesscookbook\MyDynamoDbHandler.class
+tech\heartin\books\serverlesscookbook\dto\HandlerResponse.class
+tech\heartin\books\serverlesscookbook\DynamoDBServiceImpl1.class
+tech\heartin\books\serverlesscookbook\MainClass.class
+tech\heartin\books\serverlesscookbook\DynamoDBServiceImpl2.class
+tech\heartin\books\serverlesscookbook\service\DynamoDBService.class
+tech\heartin\books\serverlesscookbook\HelloWorldLambdaHandler.class
+tech\heartin\books\serverlesscookbook\dto\DynamoDbCrudResponse.class
+tech\heartin\books\serverlesscookbook\service\DynamoDbCrudService.class
+tech\heartin\books\serverlesscookbook\MyDynamoDbCrudHandler.class
+tech\heartin\books\serverlesscookbook\dto\DynamoDbResponse.class
+tech\heartin\books\serverlesscookbook\dto\HandlerRequest.class
+tech\heartin\books\serverlesscookbook\dto\DynamoDbRequest.class
+tech\heartin\books\serverlesscookbook\DynamoDbCrudImpl.class
+tech\heartin\books\serverlesscookbook\MyLambdaHandler.class
